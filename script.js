@@ -47,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const playAgainButton = document.getElementById('play-again-button');
     const bouncingContainer = document.getElementById('bouncing-images-container');
     const imagesToBounce = ['image1.png', 'image2.png', 'image3.png', 'image4.png', 'image5.png', 'image6.png', 'image7.png', 'image8.png', 'image9.png', 'image10.png'];
+    let imagesAdded = 0;
 
     // --- Screen and Game Flow Functions ---
     const switchScreen = (targetId) => {
@@ -70,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         team2NameDisplay.textContent = team2Name;
         team1NameModal.textContent = team1Name;
         team2NameModal.textContent = team2Name;
-        
+
         switchScreen('game-board');
     });
 
@@ -111,6 +112,17 @@ document.addEventListener('DOMContentLoaded', () => {
         gameData.answeredQuestions++;
         closeModal();
 
+        // Add a new bouncing image if one is available
+        if (imagesAdded < imagesToBounce.length) {
+            const imgSrc = imagesToBounce[imagesAdded];
+            const img = document.createElement('img');
+            img.src = imgSrc;
+            img.className = 'bouncing-image';
+            bouncingContainer.appendChild(img);
+            bounceImage(img);
+            imagesAdded++;
+        }
+
         if (gameData.answeredQuestions >= questionBoxes.length) {
             endGame();
         }
@@ -137,17 +149,29 @@ document.addEventListener('DOMContentLoaded', () => {
         finalScoreTeam1.textContent = `${gameData.teams[0].name}: $${team1Score}`;
         finalScoreTeam2.textContent = `${gameData.teams[1].name}: $${team2Score}`;
 
+        // Move the bouncing images container to the final screen
+        finalScreen.prepend(bouncingContainer);
+
         switchScreen('final-screen');
     };
 
     playAgainButton.addEventListener('click', () => {
+        // Reset game state
         gameData.teams[0].score = 0;
         gameData.teams[1].score = 0;
         gameData.answeredQuestions = 0;
+        imagesAdded = 0;
 
+        // Clear all bouncing images
+        bouncingContainer.innerHTML = '';
+
+        // Reset question boxes
         questionBoxes.forEach(box => {
             box.classList.remove('answered');
         });
+
+        // Move the bouncing images container back to the game board
+        document.getElementById('game-board').prepend(bouncingContainer);
 
         switchScreen('main-menu');
     });
@@ -179,14 +203,6 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         animate();
     };
-
-    imagesToBounce.forEach(imgSrc => {
-        const img = document.createElement('img');
-        img.src = imgSrc;
-        img.className = 'bouncing-image';
-        bouncingContainer.appendChild(img);
-        bounceImage(img);
-    });
 
     const menuMusic = document.getElementById('menu-music');
     startButton.addEventListener('click', () => {

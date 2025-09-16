@@ -10,7 +10,6 @@
 
     <section id="main-menu" class="screen active">
         <h1 class="quirky-title">AMIYA'S BIRTHDAY JEOPARDY</h1>
-        <div id="bouncing-images-container"></div>
         <button id="start-button">START</button>
         <audio id="menu-music" src="your_menu_music.mp3" loop autoplay></audio>
     </section>
@@ -19,16 +18,17 @@
         <h2 class="quirky-title">ENTER TEAM NAMES</h2>
         <div class="input-container">
             <label for="team1-name">TEAM 1 NAME:</label>
-            <input type="text" id="team1-name" placeholder="Team Awesome">
+            <input type="text" id="team1-name" placeholder="Team Oyster">
         </div>
         <div class="input-container">
             <label for="team2-name">TEAM 2 NAME:</label>
-            <input type="text" id="team2-name" placeholder="Team Fun">
+            <input type="text" id="team2-name" placeholder="Team Umami">
         </div>
         <button id="start-game-button">LET'S GO!</button>
     </section>
 
     <section id="game-board" class="screen">
+        <div id="bouncing-images-container"></div>
         <div class="scoreboard">
             <div id="team1-score" class="score-card">
                 <span id="team1-name-display">TEAM 1</span>
