@@ -1,9 +1,9 @@
 :root {
-    --primary-color: #ff69b4; /* Hot pink */
-    --secondary-color: #8a2be2; /* Blue violet */
-    --accent-color: #ffdb58; /* Mustard yellow */
+    --primary-color: #ff69b4; 
+    --secondary-color: #8a2be2; 
+    --accent-color: #ffdb58; 
     --background-color: #333;
-    --font-stack: 'Comic Sans MS', cursive, sans-serif; /* Quirky retro font */
+    --font-stack: 'Comic Sans MS', cursive, sans-serif; 
 }
 
 body {
