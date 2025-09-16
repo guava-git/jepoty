@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amiya's Birthday Jeopardy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="main-menu" class="screen active">
+        <h1 class="quirky-title">AMIYA'S BIRTHDAY JEOPARDY</h1>
+        <div id="bouncing-images-container"></div>
+        <button id="start-button">START</button>
+        <audio id="menu-music" src="your_menu_music.mp3" loop autoplay></audio>
+    </section>
+
+    <section id="team-setup" class="screen">
+        <h2 class="quirky-title">ENTER TEAM NAMES</h2>
+        <div class="input-container">
+            <label for="team1-name">TEAM 1 NAME:</label>
+            <input type="text" id="team1-name" placeholder="Team Awesome">
+        </div>
+        <div class="input-container">
+            <label for="team2-name">TEAM 2 NAME:</label>
+            <input type="text" id="team2-name" placeholder="Team Fun">
+        </div>
+        <button id="start-game-button">LET'S GO!</button>
+    </section>
+
+    <section id="game-board" class="screen">
+        <div class="scoreboard">
+            <div id="team1-score" class="score-card">
+                <span id="team1-name-display">TEAM 1</span>
+            </div>
+            <div id="team2-score" class="score-card">
+                <span id="team2-name-display">TEAM 2</span>
+            </div>
+        </div>
+        <div class="jeopardy-grid">
+            <div class="category-column">
+                <div class="category-title">CATEGORY 1</div>
+                <div class="question-box" data-value="100" data-category="0" data-q-index="0">$100</div>
+                <div class="question-box" data-value="200" data-category="0" data-q-index="1">$200</div>
+                <div class="question-box" data-value="300" data-category="0" data-q-index="2">$300</div>
+                <div class="question-box" data-value="400" data-category="0" data-q-index="3">$400</div>
+                <div class="question-box" data-value="500" data-category="0" data-q-index="4">$500</div>
+            </div>
+            <div class="category-column">
+                <div class="category-title">CATEGORY 2</div>
+                <div class="question-box" data-value="100" data-category="1" data-q-index="0">$100</div>
+                <div class="question-box" data-value="200" data-category="1" data-q-index="1">$200</div>
+                <div class="question-box" data-value="300" data-category="1" data-q-index="2">$300</div>
+                <div class="question-box" data-value="400" data-category="1" data-q-index="3">$400</div>
+                <div class="question-box" data-value="500" data-category="1" data-q-index="4">$500</div>
+            </div>
+            <div class="category-column">
+                <div class="category-title">CATEGORY 3</div>
+                <div class="question-box" data-value="100" data-category="2" data-q-index="0">$100</div>
+                <div class="question-box" data-value="200" data-category="2" data-q-index="1">$200</div>
+                <div class="question-box" data-value="300" data-category="2" data-q-index="2">$300</div>
+                <div class="question-box" data-value="400" data-category="2" data-q-index="3">$400</div>
+                <div class="question-box" data-value="500" data-category="2" data-q-index="4">$500</div>
+            </div>
+        </div>
+    </section>
+
+    <div id="question-modal" class="modal">
+        <div class="modal-content">
+            <p id="question-text"></p>
+            <div class="team-buttons">
+                <div class="team-controls left">
+                    <h3 id="team1-name-modal">TEAM 1</h3>
+                    <div class="button-row">
+                        <button id="team1-correct-button" class="circular green"></button>
+                        <button id="team1-incorrect-button" class="circular red"></button>
+                    </div>
+                </div>
+                <div class="team-controls right">
+                    <h3 id="team2-name-modal">TEAM 2</h3>
+                    <div class="button-row">
+                        <button id="team2-correct-button" class="circular green"></button>
+                        <button id="team2-incorrect-button" class="circular red"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="final-screen" class="screen">
+        <h1 id="winner-text" class="quirky-title"></h1>
+        <div id="final-scores">
+            <p id="final-score-team1"></p>
+            <p id="final-score-team2"></p>
+        </div>
+        <button id="play-again-button">PLAY AGAIN</button>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
